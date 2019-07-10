@@ -223,6 +223,9 @@ vendor.gralloc.disable_ubwc=0
 # Incremental FS
 ro.incremental.enable=true
 
+# Media
+debug.stagefright.c2inputsurface=-1
+
 # OTG
 persist.sys.oem.otg_support=true
 
