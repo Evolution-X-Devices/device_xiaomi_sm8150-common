@@ -225,6 +225,7 @@ ro.incremental.enable=true
 
 # Media
 debug.stagefright.c2inputsurface=-1
+vendor.media.omx=0
 
 # OTG
 persist.sys.oem.otg_support=true
