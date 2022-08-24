@@ -89,6 +89,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     checkpoint_gc \
     otapreopt_script
+else
+$(call inherit-product, $(SRC_TARGET_DIR)/product/non_ab_device.mk)
 endif
 
 # Audio
