@@ -7,7 +7,6 @@
 soong_namespace {
     imports: [
         "bootable/deprecated-ota",
-        "hardware/qcom-caf/bootctrl",
     ],
 }
 
