@@ -80,7 +80,6 @@ endif
 
 # Init
 TARGET_INIT_VENDOR_LIB ?= //$(COMMON_PATH):init_xiaomi_msmnile
-TARGET_RECOVERY_DEVICE_MODULES ?= init_xiaomi_msmnile
 
 # Kernel
 ifeq ($(TARGET_IS_VAB),true)

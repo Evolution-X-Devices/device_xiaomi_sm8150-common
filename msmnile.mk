@@ -408,6 +408,10 @@ PRODUCT_PACKAGES += \
     libvndfwk_detect_jni.qti \
     libvndfwk_detect_jni.qti.vendor
 
+# Recovery
+PRODUCT_PACKAGES += \
+    init_xiaomi_msmnile.recovery
+
 # RIL
 PRODUCT_PACKAGES += \
     CarrierConfigOverlay \
