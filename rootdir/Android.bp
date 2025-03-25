@@ -81,8 +81,8 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
-    name: "init.recovery.qcom.rc",
-    src: "etc/init.recovery.qcom.rc",
+    name: "init.qcom.recovery.rc",
+    src: "etc/init.qcom.recovery.rc",
     sub_dir: "init",
     recovery: true,
 }

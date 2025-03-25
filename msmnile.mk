@@ -440,8 +440,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     init.qcom.power.rc \
     init.qcom.rc \
+    init.qcom.recovery.rc \
     init.qcom.usb.rc \
-    init.recovery.qcom.rc \
     init.target.rc \
     init.xiaomi.rc \
     ueventd.qcom.rc
