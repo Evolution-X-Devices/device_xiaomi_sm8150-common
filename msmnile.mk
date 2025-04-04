@@ -145,9 +145,10 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
 
 # Camera
+TARGET_BUILD_DEVICE_AS_WEBCAM := true
+
 $(call soong_config_set_bool,camera,override_format_from_reserved,true)
 $(call soong_config_set,camera,package_name,com.xiaomi.sessionparams.clientName)
-
 $(call soong_config_set,libcameraservice,ext_lib,//$(LOCAL_PATH):libcameraservice_extension.msmnile)
 
 PRODUCT_PACKAGES += \
