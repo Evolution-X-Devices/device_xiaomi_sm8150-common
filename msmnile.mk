@@ -159,6 +159,8 @@ PRODUCT_PACKAGES += \
 TARGET_ENABLE_BLUR := true
 
 # Camera
+TARGET_BUILD_DEVICE_AS_WEBCAM := true
+
 $(call inherit-product-if-exists, vendor/xiaomi/miuicamera/config.mk)
 
 PRODUCT_PACKAGES += \
