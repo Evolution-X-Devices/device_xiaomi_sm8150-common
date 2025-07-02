@@ -244,7 +244,9 @@ PRODUCT_COPY_FILES += \
 ifeq ($(TARGET_HAS_UDFPS),true)
 PRODUCT_PACKAGES += \
     libudfpshandler \
-    sensors.udfps
+    sensors.udfps \
+    sensors.single_tap \
+    sensors.double_tap
 
 PRODUCT_PACKAGES += \
     vendor.goodix.hardware.biometrics.fingerprint@2.1.vendor
