@@ -53,6 +53,9 @@ blob_fixups: blob_fixups_user_type = {
         .add_line_if_missing('gettid: 1'),
     'vendor/etc/seccomp_policy/vendor.qti.hardware.dsp.policy': blob_fixup()
         .add_line_if_missing('madvise: 1'),
+    'vendor/etc/wfdconfig.xml': blob_fixup()
+        .regex_replace('<AudioStreamInSuspend>0</AudioStreamInSuspend>', '<AudioStreamInSuspend>1</AudioStreamInSuspend>')
+        .regex_replace('<HID>0</HID>', '<HID>1</HID>'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
