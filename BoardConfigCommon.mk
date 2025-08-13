@@ -62,8 +62,6 @@ TARGET_NO_BOOTLOADER := true
 # Camera
 MALLOC_SVELTE := true
 MALLOC_SVELTE_FOR_LIBC32 := true
-TARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED := true
-TARGET_CAMERA_PACKAGE_NAME := com.xiaomi.sessionparams.clientName
 
 # Display
 ifeq ($(TARGET_HAS_UDFPS),true)
