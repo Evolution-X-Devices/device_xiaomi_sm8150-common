@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2019-2020 The LineageOS Project
+// Copyright (C) 2019-2025 The LineageOS Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,50 +13,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-soong_config_module_type {
-    name: "livedisplay_supported_interfaces",
-    module_type: "cc_defaults",
-    config_namespace: "XIAOMI_MSMNILE",
-    bool_variables: [
-        "livedisplay_support_anti_flicker",
-        "livedisplay_support_sunlight_enhancement",
-    ],
-    properties: [
-        "cflags",
-        "vintf_fragments",
-    ],
-}
-
-livedisplay_supported_interfaces {
-    name: "livedisplay_supported_interfaces_defaults",
-    soong_config_variables: {
-        livedisplay_support_anti_flicker: {
-            cflags: ["-DSUPPORT_ANTI_FLICKER"],
-            vintf_fragments: [
-                "vendor.lineage.livedisplay@2.1_IAntiFlicker.xml",
-            ],
-        },
-        livedisplay_support_sunlight_enhancement: {
-            cflags: ["-DSUPPORT_SUNLIGHT_ENHANCEMENT"],
-            vintf_fragments: [
-                "vendor.lineage.livedisplay@2.1_ISunlightEnhancement.xml",
-            ],
-        },
-    },
-}
-
 cc_binary {
-    name: "vendor.lineage.livedisplay@2.1-service.xiaomi_sm8150",
-    defaults: [
-        "hidl_defaults",
-        "livedisplay_supported_interfaces_defaults",
+    name: "vendor.lineage.livedisplay-service.xiaomi_sm8150",
+    vintf_fragments: select(soong_config_variable("XIAOMI_MSMNILE", "livedisplay_support_anti_flicker"), {
+        "true": ["vendor.lineage.livedisplay_IAntiFlicker.xml"],
+        default: [],
+    }) + select(soong_config_variable("XIAOMI_MSMNILE", "livedisplay_support_sunlight_enhancement"), {
+        "true": ["vendor.lineage.livedisplay_ISunlightEnhancement.xml"],
+        default: [],
+    }) + [
+        "vendor.lineage.livedisplay-service.xiaomi_sm8150.xml",
     ],
-    vintf_fragments: ["vendor.lineage.livedisplay@2.1-service.xiaomi_sm8150.xml"],
-    init_rc: ["vendor.lineage.livedisplay@2.1-service.xiaomi_sm8150.rc"],
+    init_rc: ["vendor.lineage.livedisplay-service.xiaomi_sm8150.rc"],
     relative_install_path: "hw",
     srcs: [
-        ":vendor.lineage.livedisplay@2.0-sdm-pa",
-        ":vendor.lineage.livedisplay@2.0-sdm-utils",
+        ":vendor.lineage.livedisplay-sdm-pa",
+        ":vendor.lineage.livedisplay-sdm-utils",
         "AntiFlicker.cpp",
         "SunlightEnhancement.cpp",
         "service.cpp",
@@ -64,13 +36,19 @@ cc_binary {
     vendor: true,
     shared_libs: [
         "libbase",
+        "libbinder_ndk",
         "libbinder",
-        "libhidlbase",
         "libutils",
-        "vendor.lineage.livedisplay@2.0",
-        "vendor.lineage.livedisplay@2.1",
+        "vendor.lineage.livedisplay-V1-ndk",
     ],
     header_libs: [
-        "vendor.lineage.livedisplay@2.0-sdm-headers",
+        "vendor.lineage.livedisplay-sdm-headers",
     ],
+    cflags: select(soong_config_variable("XIAOMI_MSMNILE", "livedisplay_support_anti_flicker"), {
+        "true": ["-DSUPPORT_ANTI_FLICKER"],
+        default: [],
+    }) + select(soong_config_variable("XIAOMI_MSMNILE", "livedisplay_support_sunlight_enhancement"), {
+        "true": ["-DSUPPORT_SUNLIGHT_ENHANCEMENT"],
+        default: [],
+    }),
 }

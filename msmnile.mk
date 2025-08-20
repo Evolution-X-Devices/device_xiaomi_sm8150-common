@@ -324,7 +324,7 @@ PRODUCT_PACKAGES += \
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.1-service.xiaomi_sm8150
+    vendor.lineage.livedisplay-service.xiaomi_sm8150
 
 # Media
 PRODUCT_COPY_FILES += \
