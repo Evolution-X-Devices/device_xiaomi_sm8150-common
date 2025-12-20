@@ -16,7 +16,7 @@ namespace vendor {
 namespace lineage {
 namespace livedisplay {
 
-static constexpr const char* kHbmStatusPath = "/sys/devices/platform/soc/soc:qcom,dsi-display/hbm";
+static constexpr const char* kHbmStatusPath = "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/hbm";
 
 ndk::ScopedAStatus SunlightEnhancement::getEnabled(bool* _aidl_return) {
     std::string buf;
