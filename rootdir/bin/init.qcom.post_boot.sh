@@ -567,8 +567,12 @@ function configure_zram_parameters() {
         if [ -f /sys/block/zram0/use_dedup ]; then
             echo 1 > /sys/block/zram0/use_dedup
         fi
-        if [ $MemTotal -le 524288 ]; then
-           echo 402653184 > /sys/block/zram0/disksize
+
+        if getprop ro.product.device | grep -q "^raphael"; then
+            echo 4096M > /sys/block/zram0/disksize
+
+        elif [ $MemTotal -le 524288 ]; then
+            echo 402653184 > /sys/block/zram0/disksize
         elif [ $MemTotal -le 1048576 ]; then
             echo 805306368 > /sys/block/zram0/disksize
         else
