@@ -390,7 +390,6 @@ PRODUCT_PACKAGES += \
     libqti-perfd-client
 
 PRODUCT_SOONG_NAMESPACES += \
-    bootable/deprecated-ota \
     hardware/google/interfaces \
     hardware/google/pixel \
     hardware/lineage/interfaces/power-libperfmgr \
