@@ -212,7 +212,7 @@ SOONG_CONFIG_XIAOMI_MSMNILE := \
     livedisplay_support_sunlight_enhancement
 
 SOONG_CONFIG_XIAOMI_MSMNILE_PARTITION_SCHEME ?= dynamic
-SOONG_CONFIG_XIAOMI_MSMNILE_livedisplay_support_anti_flicker ?= false
+SOONG_CONFIG_XIAOMI_MSMNILE_livedisplay_support_anti_flicker ?= true
 SOONG_CONFIG_XIAOMI_MSMNILE_livedisplay_support_sunlight_enhancement ?= true
 
 # Treble
