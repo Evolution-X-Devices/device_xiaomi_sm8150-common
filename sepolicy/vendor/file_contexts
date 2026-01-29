@@ -23,6 +23,8 @@
 # Charger
 /vendor/bin/batterysecret                                                                           u:object_r:vendor_batterysecret_exec:s0
 
+# FastCharge
+/sys/class/power_supply/bms/fastcharge_mode                                                         u:object_r:vendor_sysfs_battery_supply:s0
 
 # Data files
 /data/vendor/dolby(/.*)?                                                                            u:object_r:vendor_data_file:s0
