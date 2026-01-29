@@ -157,7 +157,7 @@ PRODUCT_PACKAGES += \
 TARGET_BUILD_DEVICE_AS_WEBCAM := true
 
 $(call soong_config_set_bool,camera,override_format_from_reserved,true)
-$(call soong_config_set,camera,package_name,com.xiaomi.sessionparams.clientName)
+$(call soong_config_set,camera,package_name,com.android.camera)
 
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
