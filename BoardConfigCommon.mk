@@ -95,6 +95,14 @@ TARGET_KERNEL_CONFIG := \
     vendor/xiaomi/sm8150-common.config
 TARGET_KERNEL_NO_GCC := true
 
+# Livedisplay
+SOONG_CONFIG_NAMESPACES += xiaomiSm8150Vars
+SOONG_CONFIG_xiaomiSm8150Vars += \
+    livedisplay_support_anti_flicker \
+    livedisplay_support_sunlight_enhancement
+SOONG_CONFIG_xiaomiSm8150Vars_livedisplay_support_anti_flicker ?= true
+SOONG_CONFIG_xiaomiSm8150Vars_livedisplay_support_sunlight_enhancement ?= true
+
 # Media
 TARGET_USES_ION := true
 
