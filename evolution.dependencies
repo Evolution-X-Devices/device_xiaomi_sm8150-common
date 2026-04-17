@@ -1,0 +1,11 @@
+[
+  {
+    "repository": "hardware_xiaomi",
+    "target_path": "hardware/xiaomi"
+  },
+  {
+    "repository": "vendor_xiaomi_sm8150-common",
+    "target_path": "vendor/xiaomi/sm8150-common",
+    "branch": "bka-cepheus"
+  }
+]
