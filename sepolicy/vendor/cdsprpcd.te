@@ -1,1 +1,4 @@
 r_dir_file(vendor_cdsprpcd, vendor_public_adsprpcd_file)
+
+# Allow cdsprpcd to access ion_device for fastrpc
+allow vendor_cdsprpcd ion_device:chr_file { read open ioctl };

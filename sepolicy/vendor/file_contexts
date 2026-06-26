@@ -1,6 +1,9 @@
 # Audio
 /dev/socket/audio_hw_socket                                                                         u:object_r:vendor_audio_socket:s0
 
+# ION
+/dev/ion                                                                                            u:object_r:ion_device:s0
+
 # AVB
 /avb(/.*)?                                                                                          u:object_r:avb_file:s0
 

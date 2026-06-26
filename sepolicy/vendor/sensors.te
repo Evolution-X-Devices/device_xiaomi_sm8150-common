@@ -1,2 +1,5 @@
 # Allow sensors to access backlight sysfs state
 r_dir_file(vendor_sensors, vendor_sysfs_graphics)
+
+# Allow sensors (sscrpcd) to access ion_device for fastrpc
+allow vendor_sensors ion_device:chr_file { read open ioctl };

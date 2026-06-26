@@ -2,3 +2,6 @@ r_dir_file(vendor_adsprpcd, vendor_public_adsprpcd_file)
 
 # Allow adsprpcd to access GPU sysfs nodes
 r_dir_file(vendor_adsprpcd, vendor_sysfs_graphics)
+
+# Allow adsprpcd to access ion_device for fastrpc
+allow vendor_adsprpcd ion_device:chr_file { read open ioctl };
