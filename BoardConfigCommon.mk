@@ -81,7 +81,7 @@ endif
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 loop.max_part=7 androidboot.usbcontroller=a600000.dwc3
-BOARD_KERNEL_CMDLINE += androidboot.fstab_suffix=qcom
+BOARD_KERNEL_CMDLINE += androidboot.fstab_suffix=qcom # androidboot.selinux=permissive
 BOARD_KERNEL_CMDLINE += androidboot.init_fatal_reboot_target=recovery
 ifneq ($(TARGET_IS_LEGACY),true)
 BOARD_KERNEL_IMAGE_NAME := Image
@@ -95,6 +95,10 @@ TARGET_KERNEL_SOURCE := kernel/xiaomi/cepheus
 TARGET_KERNEL_CONFIG := \
     vendor/sm8150-perf_defconfig \
     vendor/xiaomi/sm8150-common.config
+
+# Kernel - clang version
+TARGET_KERNEL_CLANG_VERSION := r563880c
+TARGET_KERNEL_CLANG_PATH := $(abspath .)/prebuilts/clang/host/linux-x86/clang-$(TARGET_KERNEL_CLANG_VERSION)
 
 # Media
 TARGET_USES_ION := true
