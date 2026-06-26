@@ -139,10 +139,6 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service_64
 
-# Configstore
-PRODUCT_PACKAGES += \
-    disable_configstore
-
 # Consumer IR
 ifeq ($(TARGET_HAS_IR),true)
 PRODUCT_PACKAGES += \
@@ -288,6 +284,7 @@ PRODUCT_PACKAGES += \
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power-service.lineage-libperfmgr \
+    libperfmgr \
     libqti-perfd-client
 
 PRODUCT_COPY_FILES += \
@@ -296,6 +293,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_SOONG_NAMESPACES += \
     hardware/google/interfaces \
     hardware/google/pixel \
+    hardware/google/pixel/power-libperfmgr \
     hardware/lineage/interfaces/power-libperfmgr \
     hardware/qcom-caf/common/libqti-perfd-client
 
