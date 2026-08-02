@@ -18,6 +18,10 @@ from extract_utils.main import (
 )
 
 blob_fixups: blob_fixups_user_type = {
+    'system_ext/etc/init/wfdservice.rc': blob_fixup()
+        .regex_replace(r'(start|stop) wfdservice\b', r'\1 wfdservice64'),
+    'system_ext/lib64/libwfdservice.so': blob_fixup()
+        .replace_needed('android.media.audio.common.types-V4-cpp.so', 'android.media.audio.common.types-V5-cpp.so'),
     'system_ext/lib64/lib-imsvideocodec.so': blob_fixup()
         .add_needed('libgui_shim.so'),
     'system_ext/lib64/libwfdnative.so': blob_fixup()
