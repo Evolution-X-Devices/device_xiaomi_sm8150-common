@@ -87,7 +87,8 @@ BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_RAMDISK_USE_LZ4 := true
 TARGET_KERNEL_SOURCE := kernel/xiaomi/sm8150
 TARGET_KERNEL_CONFIG := \
-    vendor/sm8150-perf_defconfig \
+    vendor/sm8150-qgki_defconfig \
+    vendor/debugfs.config \
     vendor/xiaomi/sm8150-common.config
 TARGET_KERNEL_NO_GCC := true
 
