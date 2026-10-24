@@ -1,0 +1,48 @@
+/*
+ * SPDX-FileCopyrightText: 2026 ergdevops
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+package org.lineageos.settings.bypass;
+
+import android.os.Bundle;
+
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceChangeListener;
+import androidx.preference.SwitchPreferenceCompat;
+
+import com.android.settingslib.widget.SettingsBasePreferenceFragment;
+
+import org.lineageos.settings.R;
+
+public class BypassChargingSettingsFragment
+        extends SettingsBasePreferenceFragment implements OnPreferenceChangeListener {
+
+    private static final String KEY_BYPASS_CHARGING = "bypass_charging";
+
+    private SwitchPreferenceCompat mBypassCharging;
+
+    @Override
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        setPreferencesFromResource(R.xml.bypass_charging_settings, rootKey);
+        mBypassCharging = findPreference(KEY_BYPASS_CHARGING);
+        mBypassCharging.setOnPreferenceChangeListener(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        boolean blocked = BypassChargingUtils.isChargingControlEnabled(getContext());
+        mBypassCharging.setEnabled(!blocked);
+        mBypassCharging.setSummary(blocked
+                ? R.string.bypass_charging_blocked : R.string.bypass_charging_summary);
+        // The quick settings tile can change the state too.
+        mBypassCharging.setChecked(!blocked && BypassChargingUtils.isEnabled(getContext()));
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        BypassChargingUtils.setEnabled(getContext(), (Boolean) newValue);
+        return true;
+    }
+}

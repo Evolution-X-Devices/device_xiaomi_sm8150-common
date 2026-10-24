@@ -10,6 +10,7 @@ import android.util.Log;
 
 import androidx.preference.PreferenceManager;
 
+import org.lineageos.settings.bypass.BypassChargingUtils;
 import org.lineageos.settings.haptic.HapticUtils;
 import org.lineageos.settings.popupcamera.PopupCameraUtils;
 
@@ -33,6 +34,7 @@ public class BootCompletedReceiver extends BroadcastReceiver {
 
         HapticUtils.restoreLevel(context);
         PopupCameraUtils.checkPopupCameraService(context);
+        BypassChargingUtils.restore(context);
 
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         boolean hbmEnabled = sharedPrefs.getBoolean(HBM_ENABLE_KEY, false);
