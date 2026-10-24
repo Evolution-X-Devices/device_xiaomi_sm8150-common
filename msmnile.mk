@@ -189,10 +189,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.drm-service.clearkey
 
-# fastbootd
-PRODUCT_PACKAGES += \
-    fastbootd
-
 # Fingerprint
 ifneq ($(TARGET_IS_TABLET),true)
 PRODUCT_PACKAGES += \
@@ -255,7 +251,6 @@ PRODUCT_PACKAGES += \
     IPACM_cfg.xml
 
 # Kernel
-PRODUCT_ENABLE_UFFD_GC := true
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
 
