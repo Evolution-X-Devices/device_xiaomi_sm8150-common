@@ -289,6 +289,7 @@ PRODUCT_COPY_FILES += \
 # Overlays
 PRODUCT_PACKAGES += \
     CarrierConfigOverlayCommon \
+    DeviceAsWebcamOverlayCommon \
     FrameworkResOverlayCommon \
     LineageDialerOverlayCommon \
     LineageSDKOverlayCommon \
