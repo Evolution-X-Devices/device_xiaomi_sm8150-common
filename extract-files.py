@@ -17,11 +17,75 @@ from extract_utils.main import (
     ExtractUtilsModule,
 )
 
+# High-speed (slow motion) encoder profiles for the back camera; the stock
+# media_profiles only carries them for the other camera ids.
+CAMERA0_HIGHSPEED_PROFILES = '''    <EncoderProfile quality="highspeed1080p" fileFormat="mp4" duration="30">
+      <Video codec="h264"
+             bitRate="42000000"
+             width="1920"
+             height="1080"
+             frameRate="120" />
+
+      <!-- audio setting is ignored -->
+      <Audio codec="aac"
+             bitRate="96000"
+             sampleRate="48000"
+             channels="1" />
+    </EncoderProfile>
+
+    <EncoderProfile quality="highspeedhigh" fileFormat="mp4" duration="30">
+      <Video codec="h264"
+             bitRate="24000000"
+             width="1280"
+             height="720"
+             frameRate="240" />
+
+      <!-- audio setting is ignored -->
+      <Audio codec="aac"
+             bitRate="96000"
+             sampleRate="48000"
+             channels="1" />
+    </EncoderProfile>
+
+    <EncoderProfile quality="highspeed720p" fileFormat="mp4" duration="30">
+      <Video codec="h264"
+             bitRate="24000000"
+             width="1280"
+             height="720"
+             frameRate="240" />
+
+      <!-- audio setting is ignored -->
+      <Audio codec="aac"
+             bitRate="96000"
+             sampleRate="48000"
+             channels="1" />
+    </EncoderProfile>
+
+    <EncoderProfile quality="highspeed480p" fileFormat="mp4" duration="30">
+      <Video codec="h264"
+             bitRate="12000000"
+             width="640"
+             height="480"
+             frameRate="240" />
+
+      <Audio codec="aac"
+             bitRate="156000"
+             sampleRate="48000"
+             channels="2" />
+    </EncoderProfile>
+
+'''
+CAMERA0_END = '    </CamcorderProfiles>\n    <!-- Front Camera -->'
+
+
 blob_fixups: blob_fixups_user_type = {
     'system/framework/WfdCommon.jar': blob_fixup()
         .apktool_patch('blob-patches/WfdCommon.patch'),
     'system_ext/lib64/libwfdservice.so': blob_fixup()
         .replace_needed('android.media.audio.common.types-V4-cpp.so', 'android.media.audio.common.types-V5-cpp.so'),
+    'vendor/etc/media_profiles_V1_0.xml': blob_fixup()
+        .regex_replace(CAMERA0_END, CAMERA0_HIGHSPEED_PROFILES + CAMERA0_END)
+        .regex_replace('maxHFRMode="120"  />', 'maxHFRMode="240"  />'),
     'vendor/etc/msm_irqbalance.conf': blob_fixup()
         .regex_replace('IGNORED_IRQ=19,21,39', 'IGNORED_IRQ=19,21,38'),
     'vendor/etc/init/android.hardware.drm@1.3-service.widevine.rc': blob_fixup()
