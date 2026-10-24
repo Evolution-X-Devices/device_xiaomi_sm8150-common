@@ -26,6 +26,9 @@
     <!-- HBM tile -->
     <string name="hbm_mode_title">High Brightness Mode</string>
 
+    <!-- DC dimming tile -->
+    <string name="dc_dimming_tile_title">DC dimming</string>
+
     <!-- Bypass charging -->
     <string name="bypass_charging_title">Bypass charging</string>
     <string name="bypass_charging_summary">Power the phone from the charger without charging the battery</string>
