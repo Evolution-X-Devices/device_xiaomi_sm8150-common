@@ -351,6 +351,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android_auto_audio.sh \
     init.class_main.sh \
+    init.mi.btmac.sh \
     init.qcom.class_core.sh \
     init.qcom.early_boot.sh \
     init.qcom.post_boot.sh \
