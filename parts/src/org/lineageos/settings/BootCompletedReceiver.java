@@ -14,6 +14,7 @@ import org.lineageos.settings.auxcamera.AuxCameraUtils;
 import org.lineageos.settings.bypass.BypassChargingUtils;
 import org.lineageos.settings.haptic.HapticUtils;
 import org.lineageos.settings.popupcamera.PopupCameraUtils;
+import org.lineageos.settings.thermal.ThermalUtils;
 
 import vendor.lineage.livedisplay.ISunlightEnhancement;
 
@@ -37,6 +38,7 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         PopupCameraUtils.checkPopupCameraService(context);
         BypassChargingUtils.restore(context);
         AuxCameraUtils.INSTANCE.restore(context);
+        ThermalUtils.getInstance(context).startService();
 
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         boolean hbmEnabled = sharedPrefs.getBoolean(HBM_ENABLE_KEY, false);

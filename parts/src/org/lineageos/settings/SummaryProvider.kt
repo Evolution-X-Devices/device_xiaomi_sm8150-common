@@ -10,8 +10,11 @@ import android.content.ContentValues
 import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
+import org.lineageos.settings.auxcamera.AuxCameraUtils
 import org.lineageos.settings.bypass.BypassChargingUtils
 import org.lineageos.settings.haptic.HapticUtils
+import org.lineageos.settings.saturation.SaturationUtils
+import org.lineageos.settings.thermal.ThermalUtils
 
 /**
  * Live subtitles for the Parts entries in Settings. Settings calls the method named by the first
@@ -38,6 +41,13 @@ class SummaryProvider : ContentProvider() {
                     else -> R.string.bypass_charging_tile_off
                 }
             )
+            METHOD_THERMAL -> context.getString(
+                if (ThermalUtils.getInstance(context).enabled) R.string.tile_on else R.string.tile_off
+            )
+            METHOD_AUX_CAMERA -> context.getString(
+                if (AuxCameraUtils.isEnabled(context)) R.string.tile_on else R.string.tile_off
+            )
+            METHOD_SATURATION -> "${SaturationUtils.get(context)}%"
             else -> return null
         }
         return Bundle().apply { putString(KEY_SUMMARY, summary) }
@@ -62,5 +72,8 @@ class SummaryProvider : ContentProvider() {
         private const val KEY_SUMMARY = "com.android.settings.summary"
         private const val METHOD_HAPTIC = "hapticSummary"
         private const val METHOD_BYPASS_CHARGING = "bypassChargingSummary"
+        private const val METHOD_THERMAL = "thermalSummary"
+        private const val METHOD_AUX_CAMERA = "auxCameraSummary"
+        private const val METHOD_SATURATION = "saturationSummary"
     }
 }
