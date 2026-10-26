@@ -37,4 +37,22 @@
     <string name="bypass_charging_tile_off">Off</string>
     <string name="bypass_charging_tile_blocked">Charging control is on</string>
     <string name="bypass_charging_blocked">Unavailable while Charging control (Settings > Battery) is on, which manages the same charging switch</string>
+
+    <!-- Tiles -->
+    <string name="tile_add">Add tile</string>
+    <string name="tile_added">Tile added</string>
+    <string name="tile_not_added">Tile not added</string>
+    <string name="tile_already_added">Tile already added</string>
+    <string name="tile_on">On</string>
+    <string name="tile_off">Off</string>
+
+    <!-- Display saturation -->
+    <string name="saturation_title">Display Saturation</string>
+    <string name="saturation_reset">Reset to default</string>
+    <string name="saturation_summary">Control the saturation level of the display</string>
+    <string name="saturation_footer_summary">Changing the color mode in display settings will
+          override the saturation level, requiring it to be reapplied.</string>
+    <string name="image_preview_content_description">Preview</string>
+    <string name="image_preview_next_page_content_description">Next</string>
+    <string name="image_preview_previous_page_content_description">Previous</string>
 </resources>
