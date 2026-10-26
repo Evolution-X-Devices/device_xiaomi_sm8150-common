@@ -19,19 +19,38 @@ package org.lineageos.settings.haptic;
 import android.content.Context;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
-import android.provider.Settings;
+
+import androidx.preference.PreferenceManager;
 
 import java.lang.Math;
 
+import org.lineageos.settings.R;
 import org.lineageos.settings.utils.FileUtils;
 
 public final class HapticUtils {
 
-    final static String PREF_LEVEL = "haptic_level_pref";
-    final static String PATH_LEVEL = "/sys/module/qti_haptics/parameters/vmax_mv_override";
+    public static final String PREF_LEVEL = "haptic_level_pref";
+    public static final String PATH_LEVEL =
+            "/sys/module/qti_haptics/parameters/vmax_mv_override";
 
-    final static int MIN_LEVEL = 1;
-    final static int MAX_LEVEL = 3700;
+    public static final int MIN_LEVEL = 1;
+    public static final int MAX_LEVEL = 3700;
+    /** Upper end of the level shown in the UI, as a percentage of MAX_LEVEL. */
+    public static final int MAX_PERCENT = 100;
+
+    public static boolean isSupported() {
+        return FileUtils.fileExists(PATH_LEVEL);
+    }
+
+    public static int getLevel(Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context).getInt(PREF_LEVEL,
+                context.getResources().getInteger(R.integer.haptic_level_default));
+    }
+
+    public static void saveLevel(Context context, int value) {
+        PreferenceManager.getDefaultSharedPreferences(context).edit()
+                .putInt(PREF_LEVEL, value).apply();
+    }
 
     public static void applyLevel(Context context, int value, boolean test) {
         if (FileUtils.fileExists(PATH_LEVEL)) {
@@ -49,7 +68,6 @@ public final class HapticUtils {
     }
 
     public static void restoreLevel(Context context) {
-        applyLevel(context, Settings.Secure.getInt(
-            context.getContentResolver(), PREF_LEVEL, 80), false);
+        applyLevel(context, getLevel(context), false);
     }
 }

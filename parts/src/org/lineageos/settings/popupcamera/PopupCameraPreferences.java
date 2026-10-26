@@ -42,4 +42,12 @@ public class PopupCameraPreferences {
     public boolean isLedAllowed() {
         return mSharedPrefs.getBoolean(LED_EFFECT_KEY, LED_EFFECT_DEFAULT_VALUE);
     }
+
+    public void setSoundEffect(String value) {
+        mSharedPrefs.edit().putString(SOUND_EFFECT_KEY, value).apply();
+    }
+
+    public void setLedAllowed(boolean allowed) {
+        mSharedPrefs.edit().putBoolean(LED_EFFECT_KEY, allowed).apply();
+    }
 }
