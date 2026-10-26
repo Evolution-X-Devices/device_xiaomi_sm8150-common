@@ -9,3 +9,6 @@ ro.product.mod_device                                                           
 
 # Vendor init
 ro.product.marketname                                                                               u:object_r:build_prop:s0
+
+# XiaomiParts
+persist.sys.aux_camera_control               u:object_r:aux_camera_control_prop:s0

@@ -55,4 +55,11 @@
     <string name="image_preview_content_description">Preview</string>
     <string name="image_preview_next_page_content_description">Next</string>
     <string name="image_preview_previous_page_content_description">Previous</string>
+
+    <!-- Auxiliary camera restrictions -->
+    <string name="aux_camera_title">Restrict Auxiliary Cameras</string>
+    <string name="aux_camera_summary">Hide auxiliary camera lenses from selected apps</string>
+    <string name="aux_camera_enable">Enable restrictions</string>
+    <string name="aux_camera_empty">No apps found</string>
+    <string name="aux_camera_limit_reached">Too many apps selected, turn another one off first</string>
 </resources>

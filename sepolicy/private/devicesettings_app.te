@@ -42,3 +42,7 @@ hal_client_domain(devicesettings_app, hal_lineage_livedisplay)
 # Allow XiaomiParts to apply display saturation through SurfaceFlinger
 allow devicesettings_app surfaceflinger_service:service_manager find;
 binder_call(devicesettings_app, surfaceflinger)
+
+# Allow XiaomiParts to set the per-app aux camera exclude list
+set_prop(devicesettings_app, aux_camera_control_prop)
+get_prop(devicesettings_app, aux_camera_control_prop)

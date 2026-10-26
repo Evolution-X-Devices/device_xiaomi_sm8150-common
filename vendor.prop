@@ -284,3 +284,6 @@ zygote.critical_window.minute=10
 # instead. Pinned images already on a device are then ignored and the
 # pre-installed APEX is used.
 apexd.config.use_fiemap=false
+
+# Camera: apps that show black previews with the auxiliary lenses
+vendor.camera.aux.packageexcludelist=com.adobe.scan.android,com.tencent.mm,us.zoom.videomeetings,in.org.npci.upiapp
